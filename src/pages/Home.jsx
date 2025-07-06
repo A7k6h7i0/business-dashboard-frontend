@@ -5,10 +5,11 @@ export default function Home() {
   const [name, setName] = useState('')
   const [location, setLocation] = useState('')
   const navigate = useNavigate()
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:5000/business-data', {
+    const response = await fetch(`${backendUrl}/business-data`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, location }),
